@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>State in React</title>
+    <script src="js/react.js"></script>
+    <script src="js/react-dom.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.34/browser.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div id="react-container"></div>
+    <script type="text/babel">
+
+    var Checkbox = React.createClass({
+        getInitialState() {
+            return {checked: false}
+        },
+        handleCheck() {
+          this.setState({checked: !this.state.checked})
+        },
+        render() {
+            var msg
+            if(this.state.checked) {
+                msg = "checked"
+            } else {
+                msg = "un-checked"
+            }
+            return(<div>
+                <input type="checkbox" onChange={this.handleCheck} defaultChecked={this.state.checked} />
+                <p>This box is {msg}</p>
+            </div>)
+        }
+    });
+
+    ReactDOM.render(<Checkbox />,
+        document.getElementById('react-container')
+    )
+
+    </script>
+</body>
+</html>
